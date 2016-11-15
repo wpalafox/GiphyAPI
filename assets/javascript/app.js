@@ -24,19 +24,44 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 		//When its finished getting the query
 		.done(function(response) {
 			
+			var results = response.data;
+			
+
+			for (var i= 0; i < results.length; i++){
+
+
+				var animalDiv = $('<div>');
+
+				var p = $('<p>').text("Rating: " + results[i].rating);
+
+				var animalImage = $('<img>'); 
+
+				 animalImage.attr('src', results[i].images.fixed_height.url);
+					
+					animalDiv.append(p);
+					animalDiv.append(animalImage);
+
+
+					$('#gifsDisplay').prepend(animalDiv);
+
+
+			}
+
+
+
 
 			//Setting the variable of image_url to the specific object
-			var imageUrl = response.data.image_original_url;
+			//var imageUrl = response.data.image_original_url;
 
 			//Created a variable called a cat image
-			var animalImage = $('<img>'); 	
+				
 
 
 			//Given the catImage the source path and an alt tag (screen readers). 
-            animalImage.attr('src', imageUrl);
-            animalImage.attr('alt', 'animal image');
+           
+            //animalImage.attr('alt', 'animal image');
 
-				$('#gifsDisplay').prepend(animalImage);
+				
 
 				
 				console.log(response); 
