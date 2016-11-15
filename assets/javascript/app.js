@@ -17,10 +17,30 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 		var animal = $(this).attr('data-name');
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q="+animal+"&limit=10&api_key=dc6zaTOxFJmzC";   
 
-		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
-				$('#gifsDisplay').html(JSON.stringify(response));
-				console.log(response);
-		
+		// Goes to the URL and retrieves the data 
+		$.ajax({url: queryURL, method: 'GET'})
+
+			
+		//When its finished getting the query
+		.done(function(response) {
+			
+
+			//Setting the variable of image_url to the specific object
+			var imageUrl = response.data.image_original_url;
+
+			//Created a variable called a cat image
+			var animalImage = $('<img>'); 	
+
+
+			//Given the catImage the source path and an alt tag (screen readers). 
+            animalImage.attr('src', imageUrl);
+            animalImage.attr('alt', 'animal image');
+
+				$('#gifsDisplay').prepend(animalImage);
+
+				
+				console.log(response); 
+				/*html(JSON.stringify(response)); */
 		});  
 
 	} 
