@@ -7,33 +7,51 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 'ferret', 'sugar glider', 'chinchilla', 'hedgehog', 'hermit crab', 'gerbil', 
 'pygmy goat', 'chicken','capybara', 'teacup pig', 'serval', 'salamander', 'frog'];
 
+//========================================================================================
 
+//function for sending the JSON content for each button into gifsArea div
+	function displayAnimalInfo(){
 
-// ===========================================================
+		//Search endpoint needs a limit (e.g., 10 gifs)
+
+		var animal = $(this).attr('data-name');
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q="+animal+"&limit=10&api_key=dc6zaTOxFJmzC";   
+
+		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+				$('#gifsDisplay').html(JSON.stringify(response));
+				console.log(response);
+		
+		});  
+
+	} 
+
+	
+
+// ======================================================================================
 
 // Deletes the animals prior to adding new animals (or there will be repeat animals)
 
-function renderButtons(){
+	function renderButtons(){
 
-	$('#animalButtons').empty();
+		$('#animalButtons').empty();
 
-	//Loops through array of animals
-	for (var i = 0; i < animals.length; i++){
+		//Loops through array of animals
+		for (var i = 0; i < animals.length; i++){
 
-	//Then dynamically generate buttons for each movie in the array
+		//Then dynamically generate buttons for each movie in the array
 
-		var a = $('<button type="button" class="btn btn primary btm-sm">'); 
+			var a = $('<button type="button" class="btn btn primary btm-sm">'); 
 		
-		a.addClass('animal'); //Added class
-		a.attr('data-name', animals[i]); //Added data-attribute
-		a.text(animals[i]); //Displays animal text on button
-		$('#animalButtons').append(a); //Adds buttons to HTML
+			a.addClass('animal'); //Added class
+			a.attr('data-name', animals[i]); //Added data-attribute
+			a.text(animals[i]); //Displays animal text on button
+			$('#animalButtons').append(a); //Adds buttons to HTML
+
+
+		}
 
 
 	}
-
-
-}
 
 //=====================================================================
 
@@ -53,13 +71,11 @@ function renderButtons(){
 		return false;
 	}) 
 
+//========================================================================
+	$(document).on('click', '.animal', displayAnimalInfo); 
+
+	renderButtons();  
+
+	
 
 
-//renderButtons();
-
-
-
-
-
-
-renderButtons(); 
