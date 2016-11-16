@@ -3,9 +3,9 @@
 
 //Initial array of animals
 
-var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', 'parrot', 
-'ferret', 'sugar glider', 'chinchilla', 'hedgehog', 'hermit crab', 'gerbil', 
-'pygmy goat', 'chicken','capybara', 'teacup pig', 'serval', 'salamander', 'frog'];
+var animals = ['bulbasaur', 'charmander', 'squirtle', 'caterpie', 'pidgey', 'pidgeotto', 'rattata', 'spearow', 
+'fearow', 'ekans', 'pikachu', 'arbok', 'raichu', 'sandslash', 
+'nidoran', 'clefairy','vulpix', 'jigglypuff', 'zubat', 'oddish', 'venonat'];
 
 //========================================================================================
 
@@ -38,6 +38,12 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 
 				 animalImage.attr('src', results[i].images.fixed_height.url);
 					
+					animalImage.addClass('pokémon');	
+					animalImage.attr('src', results[i].images.fixed_height.url);
+				 	animalImage.attr('data-animate', results[i].images.fixed_height.url);
+				 	animalImage.attr('data-still', results[i].images.fixed_height_still.url);
+
+
 					animalDiv.append(p);
 					animalDiv.append(animalImage);
 
@@ -46,6 +52,26 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 
 
 			}
+
+
+			$('.pokémon').on('click', function(){
+
+
+			var state = $(this).attr('data-state');
+
+
+			if (state == 'still'){
+                $(this).attr('src', $(this).data('animate'));
+                $(this).attr('data-state', 'animate');
+            }else{
+                $(this).attr('src', $(this).data('still'));
+                $(this).attr('data-state', 'still');
+            }
+
+
+
+
+			});
 
 
 
@@ -120,7 +146,3 @@ var animals = ['dog', 'cat', 'rabbit', 'hamster', 'skunk', 'goldfish', 'bird', '
 	$(document).on('click', '.animal', displayAnimalInfo); 
 
 	renderButtons();  
-
-	
-
-
