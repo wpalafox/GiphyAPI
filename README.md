@@ -1,4 +1,4 @@
 # GiphyAPI
 Week 6 Project.
 
-A program that dynamically adds buttons that produce gifs to a webpage. The user can pause and animate the gifs with clicks. 
+A Gif program that dynamically adds buttons, and if the user clicks on a particular button, the button will retrieve animated gifs that correspond with its data-label. The user can pause and animate the gifs with clicks. 
