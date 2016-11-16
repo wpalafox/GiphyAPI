@@ -15,7 +15,7 @@ var animals = ['bulbasaur', 'charmander', 'squirtle', 'caterpie', 'pidgey', 'pid
 		//Search endpoint needs a limit (e.g., 10 gifs)
 
 		var animal = $(this).attr('data-name');
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q="+animal+"&limit=10&api_key=dc6zaTOxFJmzC";   
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q="+animal+"&limit=10&api_key=dc6zaTOxFJmzC";   
 
 		// Goes to the URL and retrieves the data 
 		$.ajax({url: queryURL, method: 'GET'})
