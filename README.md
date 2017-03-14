@@ -8,5 +8,5 @@ Check out the application here: https://damp-tor-92617.herokuapp.com
 # Technologies
 1. HTML/CSS
 2. Javascript
-3. Ajax requests
+3. AJAX requests
 4. Giphy API
