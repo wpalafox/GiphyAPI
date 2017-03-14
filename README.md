@@ -6,7 +6,7 @@ A Gif program that dynamically adds buttons, and if the user clicks on a particu
 Check out the application here: https://damp-tor-92617.herokuapp.com
 
 # Technologies
-HTML/CSS
-Javascript
-Ajax requests
-
+1. HTML/CSS
+2. Javascript
+3. Ajax requests
+4. Giphy API
